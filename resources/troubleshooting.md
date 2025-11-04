@@ -81,7 +81,7 @@ except Exception as e:
 
 2. Check `.env` file:
 
-   ```
+   ```bash
    GCP_PROJECT_ID=your-actual-project-id
    ```
 
@@ -346,14 +346,14 @@ class SimpleBot:
 
 3. Verify file format:
 
-   ```
+   ```bash
    KEY=value
    ANOTHER_KEY=another_value
    ```
 
 4. Add to `.gitignore`:
 
-   ```
+   ```bash
    .env
    .env.local
    ```

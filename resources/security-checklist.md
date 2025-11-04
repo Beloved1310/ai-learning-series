@@ -186,7 +186,7 @@ pip install --upgrade -r requirements.txt
 
 ### Use Specific Versions
 
-```text
+```bash
 # requirements.txt
 google-cloud-aiplatform==1.26.0  # ✅ Specific version
 vertexai>=0.1.0,<1.0.0           # ✅ Version range

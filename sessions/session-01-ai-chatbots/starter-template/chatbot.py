@@ -4,18 +4,21 @@ This is a simple chatbot that uses Gemini API to respond to user input.
 """
 
 import os
-from google.cloud import aiplatform
-from vertexai.generative_models import GenerativeModel
+import google.generativeai as genai
 from dotenv import load_dotenv
 
-# Load environment variables
+# Load environment variables from .env file
 load_dotenv()
 
-# Initialize Vertex AI
-PROJECT_ID = os.getenv("GCP_PROJECT_ID", "your-project-id")
-LOCATION = os.getenv("GCP_LOCATION", "us-central1")
+# Configure Gemini API
+API_KEY = os.getenv("GEMINI_API_KEY")
+if not API_KEY:
+    raise ValueError(
+        "GEMINI_API_KEY not found in environment variables. "
+        "Please set it in your .env file or environment."
+    )
 
-aiplatform.init(project=PROJECT_ID, location=LOCATION)
+genai.configure(api_key=API_KEY)
 
 
 class SimpleBot:
@@ -28,7 +31,10 @@ class SimpleBot:
         Args:
             system_prompt: Optional system prompt to set bot personality
         """
-        self.model = GenerativeModel("gemini-1.5-flash")
+        self.model = genai.GenerativeModel(
+            "gemini-1.5-flash",
+            system_instruction=system_prompt or "You are a helpful assistant."
+        )
         self.system_prompt = system_prompt or "You are a helpful assistant."
         self.conversation_history = []
 
@@ -45,21 +51,12 @@ class SimpleBot:
         try:
             # Add user message to history
             self.conversation_history.append(
-                {"role": "user", "content": user_message}
+                {"role": "user", "parts": [user_message]}
             )
 
-            # Build the full prompt with system instruction and history
-            messages = [
-                {"role": "user", "content": self.system_prompt},
-            ]
-
-            # Add conversation history
-            for msg in self.conversation_history:
-                messages.append(msg)
-
-            # Generate response
+            # Generate response using conversation history
             response = self.model.generate_content(
-                [msg["content"] for msg in messages]
+                self.conversation_history
             )
 
             # Extract response text
@@ -67,7 +64,7 @@ class SimpleBot:
 
             # Add bot response to history
             self.conversation_history.append(
-                {"role": "assistant", "content": bot_response}
+                {"role": "model", "parts": [bot_response]}
             )
 
             return bot_response

@@ -73,7 +73,7 @@ cd sessions/session-01-ai-chatbots/participants/[your-username]
 
 ### Step 2: Add Your Files
 
-```text
+```bash
 [your-username]/
 ├── code/
 │   ├── chatbot.py

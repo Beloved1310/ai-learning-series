@@ -17,13 +17,13 @@ pip install -r requirements.txt
 
 ### 2. Configure
 
-Create a `.env` file:
+Create a `.env` file in the project root:
 
+```bash
+GEMINI_API_KEY=your-gemini-api-key-here
 ```
-GCP_PROJECT_ID=your-project-id
-GCP_LOCATION=us-central1
-GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/key.json
-```
+
+Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
 ### 3. Run
 
@@ -101,14 +101,17 @@ bot = SimpleBot(system_prompt=system_prompt)
 ## Troubleshooting
 
 **"Permission denied" error**
+
 - Check `GOOGLE_APPLICATION_CREDENTIALS` is set correctly
 - Verify service account has "Vertex AI User" role
 
 **"Module not found" error**
+
 - Ensure virtual environment is activated
 - Run `pip install -r requirements.txt`
 
 **"Project not found" error**
+
 - Check `GCP_PROJECT_ID` in `.env` file
 - Verify project ID is correct
 

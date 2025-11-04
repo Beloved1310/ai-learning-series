@@ -44,7 +44,7 @@ A conversational AI career coach that:
          ▼
 ┌─────────────────────────────────────┐
 │   Gemini API with Career Persona    │
-│  (System Prompt: Career Coach)       │
+│  (System Prompt: Career Coach)      │
 └────────┬────────────────────────────┘
          │
          ▼

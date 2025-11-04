@@ -93,7 +93,7 @@ pip install google-generativeai
 
 Or add to `requirements.txt`:
 
-```text
+```bash
 google-generativeai>=0.3.0
 python-dotenv>=1.0.0
 ```
@@ -144,7 +144,7 @@ python test_gemini.py
 
 Expected output:
 
-```text
+```bash
 ✅ API is working!
 Response: Hello from Gemini!
 ```

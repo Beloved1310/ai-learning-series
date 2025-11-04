@@ -1,4 +1,14 @@
-# GCP Setup Guide
+# GCP & Vertex AI Setup Guide
+
+> ⚠️ **Note:** This guide is for advanced users or production deployments.
+>
+> **For Session 1, use the [Gemini API Key Setup](./gemini-api-key-setup.md) instead** - it's simpler and faster!
+>
+> This guide is useful if you want to use Vertex AI or deploy to production with GCP.
+
+## Overview
+
+This guide walks you through setting up Google Cloud Platform (GCP) and Vertex AI for using Gemini models in a production environment.
 
 ## Prerequisites
 
